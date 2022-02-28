@@ -4,6 +4,7 @@ import { API_URL } from '@/config/index'
 import styles from '@/styles/Event.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import CheckImage from 'common'
 
 export default function EventPage({ evt }) {
 
@@ -28,7 +29,7 @@ export default function EventPage({ evt }) {
         <h1>{evt.name}</h1>
         {evt.image && (
           <div className={styles.image}>
-            <Image src={evt.image.data.attributes.formats.thumbnail.url} width={960} height={600} />
+            <Image src={CheckImage(evt)} width={960} height={600} />
           </div>
         )}
         <h3>Performers:</h3>

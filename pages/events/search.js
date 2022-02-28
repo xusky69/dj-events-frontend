@@ -71,7 +71,6 @@ export async function getServerSideProps({ query: { term } }) {
             encodeValuesOnly: true,
         })
 
-    // const res = await fetch(`${API_URL}/api/events?filters[name][$contains]=${term}`)
     const res = await fetch(`${API_URL}/api/events?${query}&populate=*`)
     const rawEvents = await res.json()
     const events = rawEvents.data.map(item => ({ ...item.attributes, id: item.id }))

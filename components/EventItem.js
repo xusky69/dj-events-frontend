@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '@/styles/EventItem.module.css'
+import CheckImage from 'common'
 
 export default function EventItem({ evt }) {
     return (
         <div className={styles.event}>
             <div className={styles.img}>
-                <Image src={evt.image ? evt.image.data.attributes.formats.thumbnail.url : '/images/event.default.png'} 
+                <Image src={CheckImage(evt, false)} 
                        width={170} 
                        height={100} />
             </div>
