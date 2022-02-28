@@ -19,11 +19,12 @@ export default function EventsPage({ events }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${API_URL}/api/events`)
-  const events = await res.json()
-
+  const res = await fetch(`${API_URL}/api/events?_sort=date:ASC&populate=*`)
+  const rawEvents = await res.json()
+  const events = rawEvents.data.map(item => ({...item.attributes, id: item.id})) 
+  
   return {
-    props: { events:events, revalidate: 1},
+    props: { events: events, revalidate: 1},
   }
 
 }
